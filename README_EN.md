@@ -12,6 +12,7 @@ Tested on Ubuntu 22.04 during the writing of my HDR in January 2024
 - Activate the free API in Account Settings
 - Then generate an API key
 - Save the API key in your ~/.bashrc or hardcode it in the Python code
+- Create a Python virtual environment with [mistralai](https://pypi.org/project/mistralai/)
 - A LaTeX file that can be compiled with pdflatex named Chapitre1.tex
 
 # Usage
@@ -25,3 +26,12 @@ Tested on Ubuntu 22.04 during the writing of my HDR in January 2024
 # Keywords
 
 Mistral-AI, Le Chat, LaTeX, Spell Checking, Prompt, LeChat, Thesis, Doctorate, PhD, HDR
+
+# Python Environnement
+
+```
+python3 -m venv mistral-env
+source mistral-env/bin/activate 
+pip install mistralai
+deactivate
+```

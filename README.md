@@ -24,7 +24,7 @@ Testé sur Ubuntu 22.04 lors de la rédaction de mon HDR en janvier 2024
 Des erreurs sont possibles. Dans ce cas modifier le prompt ou modifier manuellement le fichier Chapitre1_rouge.tex puis taper la commande suivante
 
 ```
-pdflated Chapitre1_rouge.tex
+pdflatex Chapitre1_rouge.tex
 ```
 
 Si besoin pensez à supprimer le dossier `Correction` pour un nouveau chapitre
