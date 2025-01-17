@@ -1,3 +1,5 @@
+#[French version](README.md)
+
 # Interacting with the Language Models Provided by Mistral AI
 
 A small code snippet to interact with Mistral AI's conversation tool to perform spell-checking on a LaTeX document. The suggestions are then underlined in red in the new document. In the LeChat/tester_API_v4 file, the prompt can be modified to translate the document. The language can also be changed. It is also possible to list all the corrections made in a second file.

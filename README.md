@@ -1,3 +1,5 @@
+[English version](README_EN.md)
+
 # Intéragir avec les modèles de langage que propose Mistral AI.
 
 Petit code pour intéragir avec l'outil de conversation de Mistral AI afin d'effectuer des corrections orthographiques d'un document Latex. Le proposition sont alors soulignés en rouge dans le nouveau document. Dans le fichier LeChat/tester_API_v4, le prompt peut être modifié pour effectuer une traduction du document. Le language peut aussi être modifié. Il est aussi possible de lister l'ensemble des corrections effectuées dans un second fichier.
