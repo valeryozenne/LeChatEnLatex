@@ -1,0 +1,9 @@
+%\begin{figure}[hbtp]
+%	%\begin{bigcenter}
+%       \includegraphics[width=1.0\linewidth]{images/Chapitre1/asynchrone.png}
+%        \caption[]{\textbf{Chaîne de traitements.} Linéaire (A) Asynchrone (B).}
+%        \label{fig-asynchrone}
+%       % \end{bigcenter}
+%\end{figure}
+
+Dans le \textcolor{red}{second} cas, l’ajustement en temps réel du schéma d’acquisition pourrait être utilisé pour compléter de manière parfaitement homogène l’espace des k dans le cas d’une acquisition 3D cardiaque. En effet, en présence de mouvements, il est possible de trier les données acquises par phase cardiaque et par phase respiratoire pour réaliser des acquisitions 5D (x,y,z,ecg,resp). Ces acquisitions ne sont pas en temps réel à proprement parler, mais peuvent être exploitées pour obtenir une description complète de l’anatomie du patient avant l’intervention. Malheureusement, la combinaison des signaux physiologiques induit un échantillonnage non uniforme de l’espace de k. Une analyse de la densité des points en temps réel pourrait corriger ce défaut en ajustant l’acquisition dès que l’état respiratoire est disponible. Cela permettrait en outre de stopper l’acquisition automatiquement dès l’obtention de l’intégralité des données nécessaires dans l’espace des k. L’utilisation d’une chaîne de traitement asynchrone est présentée en figure \ref{fig-asynchrone}.\\

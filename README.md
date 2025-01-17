@@ -24,6 +24,8 @@ Des erreurs sont possibles. Dans ce cas modifier le prompt ou modifier manuellem
 pdflated Chapitre1_rouge.tex
 ```
 
+Si besoin pensez à supprimer le dossier `Correction` pour un nouveau chapitre
+
 
 # Liste non exhaustives d'erreurs (grossières) ajoutées
 

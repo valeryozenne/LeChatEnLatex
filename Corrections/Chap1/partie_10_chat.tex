@@ -1,0 +1,6 @@
+Connaissant la température locale du tissu, il est possible de prédire la mort cellulaire en utilisant le calcul de la dose thermique dans chaque voxel. La dose thermique a été introduite par \cite{sapareto1984thermal} qui a étudié la relation entre la température, le temps d'exposition (la durée du chauffage) et la mort cellulaire. Ils ont démontré qu'à $43^\circ$C, la durée nécessaire pour détruire $99\%$ des cellules de culture était de $240$ minutes. En augmentant d'un degré, le temps d'exposition est divisé par deux. Ce qui conduit sur des cellules en culture à une durée proche de $1$ s à $55^\circ$C. Ainsi, la surveillance en temps réel de la distribution de la dose thermique dans la région cible peut être utilisée pour déterminer (et minimiser) la durée nécessaire de l'ablation thermique. La relation entre la température et la \ac{CEM43} est la suivante:
+
+%\[
+%    CEM_{43}(t)=
+%\begin{cases}
+%       \int_{0}^{t} {4^{T(t)-43}}dt,& \text{if } T(t)\geq 43\\

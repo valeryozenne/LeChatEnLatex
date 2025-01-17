@@ -1,0 +1,289 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand{\thesubsection}{\Alph{section} - \arabic{subsection}}
+\usepackage{minitoc}
+\usepackage{hyperref}
+\usepackage{isotope}
+\usepackage{xcolor}
+\usepackage[printonlyused,withpage]{acronym}
+\begin{document}
+
+
+
+\newcommand{\CUDA}{\textsc{Cuda}\textsuperscript \textregistered}
+\newcommand{\MATLAB}{\textsc{Matlab}\textsuperscript \textregistered}
+\newcommand{\COMSOL}{\textsc{Comsol}\textsuperscript \textregistered}
+\newcommand{\GADGETRON}{\textsc{Gadgetron }}
+\newcommand{\OPENFOAM}{\textsc{OpenFOAM} }
+\newcommand{\FENICS}{\textsc{Fenics} }
+\newcommand{\OpenRecon}{\textsc{Open Recon}\textsuperscript \textregistered}
+\newcommand{\TULSAPRO}{\textsc{TULSA-PRO}\textsuperscript \textregistered}
+\newcommand{\ANTIDOTE}{\textsc{Antidote}\textsuperscript \textregistered}
+\newcommand{\LECHAT}{\textsc{LE CHAT}\textsuperscript \textregistered}
+\newcommand{\OBJA}{\textsc{Objectif A} }
+\newcommand{\OBJB}{\textsc{Objectif B} }
+\newcommand{\SIMEXP}{\textsc{Sim2ExpThermomics }}
+\newcommand{\TICS}{\textsc{Thermomics }}
+\newcommand{\CPLUSPLUS}{\textsc{C++}}
+\newcommand{\exvivo}{\textit{ex vivo}}
+\newcommand{\invivo}{\textit{in vivo}}
+
+\begin{acronym}
+\renewcommand{\\}{}
+\acro{ACP}{analyse en composante principale}
+\acro{ANR}{Agence Nationale de la Recherche}
+\acro{CARTLOVE}{CARTLOVE}
+\acro{CEM43}{dose cumulée équivalente à 43°C ou de l'anglais Cumulated Equivalent Minute}
+\acro{CHAUPATAT}{CHAUPATAT}
+\acro{CHC}{Carcinome Hépatocellulaire}
+\acro{CIFRE}{convention industrielle de formation par la recherche}
+\acro{CNN}{réseau de neurones à convolution ou de l'anglais convolutional neural network }
+\acro{CPU}{processeur ou de l'anglais central processing unit}
+\acro{CNRS}{centre national de la recherche scientifique}
+\acro{CRMSB}{Centre de Résonance Magnétique des Systèmes Biologiques}
+\acro{CS}{acquisition comprimée ou de l'anglais compressed sensing}
+\acro{CSD}{modèle de déconvolution sphérique contrainte}
+\acro{DFG}{fondation allemande pour la recherche ou en allemand Deutsche Forschungsgemeinschaft}
+\acro{DICOM}{de l'anglais Digital imaging and communications in medicine}
+\acro{DTI}{imagerie du tenseur de diffusion ou de l'anglais Diffusion tensor Imaging}
+\acro{ECG}[ECG]{électrocardiogramme}
+\acro{EPI}{imagerie echo planaire ou de l'anglais Echo-Planar Imaging}
+\acro{FLASH}{Fast low angle shot magnetic resonance imaging}
+\acro{GRAPPA}{de l'anglais GeneRalized Autocalibrating Partial Parallel Acquisition}
+\acro{GRE}{echo de gradient ou de l'anglais Gradient echo}
+\acro{GPU}[GPU]{processeur graphique, ou de l'anglais Graphics Processing Unit}
+\acro{HIFU}{ultrasons focalisés de haute intensité ou de l'anglais High Focus Ultrasound}
+\acro{I2M}{institut de mécanique et d'ingénierie}
+\acro{IHU}[IHU]{institut hospitalo-universitaire}
+\acro{IRM}{Imagerie par Résonance Magnétique ou de l'anglais Magnetic Resonance Imaging}
+\acro{IRMf}{imagerie fonctionnelle}
+\acro{LINAC}{linear particle accelerator}
+\acro{Liryc}{des maladies du rythme cardiaque}
+\acro{LITT}{laser ou Laser-induced interstitial thermotherapy}
+\acro{LMU}{Ludwig Maximilian University}
+\acro{PDF}{projection sur dipole magnétique ou de l'anglais Projection into field}
+\acro{MB}{multibande}
+\acro{MRS}{Magnetic Resonance Spectrometry}
+\acro{OF}{flux d'optique ou Optical Flow}
+\acro{ppm}{partie par million}
+\acro{PRFs}{déplacement de la fréquence de résonance du proton ou de l'anglais Proton Resonance Frequency Shift}
+\acro{RF}{radiofréquence}
+\acro{QSM}{imagerie de susceptibilité magnétique quantitative ou de l'anglais Quantitative Susceptibilité Mapping}
+\acro{SMARTHEAT}{Spatial Mapping and Analysis of Real-time MRI Thermometry data for Highly Efficient liver tumor Ablation using inverse Thermal modeling}
+\acro{SMS}{multicoupes simultanées ou de l'anglais Simultaneous Multi Slice}
+\acro{STI}{imagerie du tenseur de structure ou de l'anglais Structure tensor Imaging}
+\acro{TIFC}{Imagerie et Caractérisation Thermique ou Thermal Imaging Field Characterization}
+\acro{TDM}{tomodensitométrie}
+\acro{TDMCP}{tomodensitométrie à comptage photonique}
+\acro{UNMASC}{UNMASC}
+
+\end{acronym}
+%!TEX root = Manuscrit.tex
+
+%\chapter{Introduction}
+\label{chap1-intro}
+\minitoc
+
+\section{La thérapie guidée par l'image}
+
+Le temps réel en traitement d’image désignent un processus pour lequel le taux de rafraîchissement des image est plus rapide que l’évolution du processus observé. Plus généralement, un système en temps réel nécessite la capacité de contrôlé un procédé à une vitesse adaptée à l’évolution du procédé contrôlé. Les opérations effectués nécessitent alors des garanties afin quelles soient complétées dans les délais impartis.\\
+
+Dans la littérature, la définition de l’imagerie en temps réel en \ac{IRM} peut prêter à confusion \cite{dietz2018nomenclature}. En effet l’\ac{IRM} est perçue comme une modalité nécessitant un temps d’acquisition relativement long par opposition à la tomographie à rayons X ou à l’imagerie ultrasonore. L’\ac{IRM} en temps réel désigne parfois le fait d’acquérir continuellement des données pour obtenir un film représentatif d’un phénomène dynamique. Pour cela, la séquence d’acquisition est optimisée de manière à échantillonner le plus rapidement possible l’espace des k\footnote{ou espace de Fourier, espace dans le domaine fréquentiel où sont stockées les données brutes issues de l’acquisition avant reconstruction} et des algorithmes de reconstruction spécifiques (par exemple en utilisant une fenêtre glissante) sont utilisés pour reconstruire les images à un taux de rafraîchissement choisi. Ces méthodes permettent de visualiser des mouvements complexes (contraction cardiaque, mouvements de la langue lors de la parole, flux sanguin dans les grosses artères) mais ne constituent pas un système en temps réel en raison de l’absence même de contraintes de temps réel\footnote{par exemple la concordance des tâches, la régularité des mesures et de leur propagation, la réaction aux événements, la réaction aux pannes et aux conflits (notion de priorité)}.\\
+
+L’IRM en temps réel, c’est-à-dire ayant spécifiquement des contraintes de temps réel (une chaîne de traitement correspondante est présentée en Figure \ref{fig-schema}, est utilisée pour l’imagerie fonctionnelle cérébrale à rétroaction, qui comprend de nombreuses applications : le traitement de troubles neurologiques (hyperactivité, épilepsie), le risque en chirurgie (via la vérification des fonctions cérébrales pré et post-opératoire) et l’exploration de la plasticité cérébrale. Des protocoles d’imagerie permettent à un individu de visualiser son activité cérébrale en temps réel. Soumis à des stimuli (visuel, sonore, mouvement), l’individu apprend à moduler l’activité de son cerveau par le biais de la mise en œuvre des stratégies mentales (en imaginant des tâches à effectuer par exemple), tout en ayant connaissance de son activité cérébrale. Pour avoir connaissance de son activité cérébrale, une séquence rapide d’\ac{IRMf} est dynamiquement acquise, et permet de cartographier le niveau d’oxygénation du sang\footnote{le signal BOLD, pour blood oxygenation level–dependent, qui est corrélé à l’activation du cerveau}. Après analyse des signaux, une grandeur physique décrivant l’activation du cerveau est transmise à l’individu (par exemple sous la forme d’un curseur). L’opérateur peut, en fonction des réponses aux stimuli, modifier les stratégies mentales que les patients doivent effectuer.\\
+
+La notion de temps réel est également centrale en IRM interventionnelle, qui est un champ d’application nouveau de l’IRM et en plein essor. Dans ce cadre, le fonctionnement du système en temps réel est beaucoup plus strict : des tâches en temps réel critiques existent et doivent absolument respecter les échéances prévues. On peut citer deux grands domaines d’applications de l’IRM interventionnelle en temps réel :\\
+
+\begin{description}
+\item  Le guidage d’aiguilles par voie percutanée : infiltrations, biopsies, drainages et aspirations.
+\item Les thermoablations : cryoablations, laser, micro-ondes, radiofréquence, \ac{HIFU} de tissus pathologiques.
+\end{description}
+
+
+%\begin{figure}[hbtp]
+	%\begin{bigcenter}
+%       \includegraphics[width=1.0\linewidth]{images/Chapitre1/schema_general.png}
+%        \caption[]{\textbf{Chaîne de traitement IRM en temps réel.} qui comprend acquisition, reconstruction d’images, correction de mouvements, analyse et visualisation des données. L’opérateur peut interagir directement ou indirectement avec le dispositif médical. Suivant la procédure, la chaîne de traitement est utilisée pour retransmettre des informations en temps réel (par exemple le signal d’activation du cerveau), piloter le dispositif en temps réel (par exemple guidage d’aiguilles) ou assurer la sécurité du patient en ayant un rétro-contrôle bloquant pendant la procédure.} 
+%        \label{fig-schema}
+%       % \end{bigcenter}
+%\end{figure}
+
+Dans ces deux cas, malgré la présence de contraintes liées à la présence du champ magnétique, l’IRM offre des avantages significatifs :\\
+
+\begin{description}
+    \item C’est une modalité non irradiante (par opposition au scanner). 
+    \item Elle bénéficie d’un excellent contraste aux tissus mous inégalé.
+    \item Elle permet d’accéder à toutes les régions du corps (par opposition à l’échographie qui est
+limitée par les interfaces osseuses).
+    \item Elle bénéficie d’une souplesse d’utilisation pour le guidage (imagerie multi-plan et multidirectionnelle).
+    \item Enfin elle permet de réaliser de l’imagerie en temps réel (notamment pour le guidage) .
+    \item Elle permet de réaliser de l’imagerie fonctionnelle en cours d’intervention, notamment de
+l’imagerie de température.
+\end{description}
+
+La maturité d’un point de vue clinique des méthodes d’IRM interventionnelle est très inégale : à titre d’exemple, le guidage d’aiguilles en neurochirurgie ou pour la chirurgie mini-invasive est relativement mature, tout comme la thermoablation par cryoablation en chirurgie abdominale. L’utilisation d’HIFU guidés par IRM pour des procédures mini-invasives d’ablation des tumeurs (prostate, sein et os) ou des tremblements essentiels connait un essor certain. Le guidage de cathéters sous IRM (mesures hémodynamiques, ablations radiofréquence cardiaque), bien que très prometteur, est quand à lui encore balbutiant.\\
+
+L’ensemble de ces procédures impose des contraintes de temps réel très fortes, que ce soit en termes de vitesse d’acquisition et de reconstruction et de visualisation des données. Ces contraintes sont exacerbées lorsque la zone à traiter est en mouvement, notamment pour les organes abdominaux et le cœur. Ainsi, de nombreux verrous restent à lever et des solutions innovantes doivent être développées pour faire de l’IRM l’outil de référence dans le domaine de la thérapie guidée par l’image.
+
+\section{La thermométrie IRM}
+\label{chap1-thermometrie}
+
+\subsection{Mesure de champ thermique par IRM, les concepts clés}
+
+L'imagerie de température par IRM est une méthode de mesure thermique non-invasive permettant de cartographier l'élévation relative de la température au sein des organes au cours de la procédure d'ablation. La mesure repose sur l'acquisition consécutive de plusieurs images au cours de la procédure et permet de visualiser à la fois la distribution spatiale (en 2D ou en 3D) de la température à un instant t\footnote{enfin plutôt sur une durée $\Delta$t} et la cinétique (ou l'évolution temporelle) de la température. Avant de présenter la méthode de mesure, il convient de rappeler que la mesure IRM n'est pas une mesure ponctuelle. La mesure de la température est effectuée d'une part sur un élement de volume appelé voxel et correspond à la moyenne de la température sur cet élément de volume (on parle de volume partiel). D'autre part le temps d'acquisition n'est pas instantané (par rapport aux variations temporelles de température). La mesure IRM est moyennée temporellement sur le durée d'acquisition. \\
+
+L'imagerie de température par IRM du proton \isotope[1]{H} repose sur l'existence d'une relation linéaire entre la température et les variations de champ magnétique local. Ces dernières sont induites par la formation ou la rupture de liaisons covalentes \isotope[1]{H}-\isotope[16]{O} lors des changements de température dans l'eau liquide. La dépendance de la température est d'environ 0.01 \ac{ppm} par degré. La méthode de \ac{PRFs} est généralement mise oeuvre par des méthodes d'imagerie de phase par écho de gradient. La \ac{PRFs} est valide entre 0 et 100 \textcelsius sur les tissus acqueux et exclus donc la graisse et les os. La relation entre la variation de température et de phase repose sur la formule suivante: 
+
+\[
+\Delta T= \frac{\Delta P}{\alpha.\gamma.B_{0}.TE.}
+\]
+
+avec $\alpha=0.01$ ppm/°C, $\gamma$ le facteur gyromagnétique du proton, $B_{0}$ le champ magnétique en Tesla, TE le temps d'écho en s, et $\Delta P$ étant la variation de phase par rapport à une image de référence. On distingue deux types de séquences avec les encodages de l'espace de k suivant:
+
+\begin{description}
+\item La séquence la plus couramment utilisée est la séquence \ac{FLASH} qui offre la meilleure fiabilité en dépit d'une résolution temporelle et d'une couverture spatiale médiocre.
+\item Les séquences d'imagerie écho-planaire ou \ac{EPI}. Cette amélioration en cadence d'acquisition est réalisée au prix d'une sensibilité acrue aux effets T2* et donc aux effets de susceptibilité magnétique telles que les distortions géométriques.
+\end{description}
+
+L'imagerie de température est extrèmement sensible à de multiples artéfacts incluant le champ statique $B0$, le mouvement, les propriétés électriques du tissu, la susceptibilité magnétique, la perfusion, le déplacement chimique. Les erreurs induites peuvent parfois être supérieures à 50°C (cf paragraphe \ref{chap3-etude3-artefact}) ou négligées suivant les conditions. J'invite le lecteur à lire ces trois revues pour plus détails \cite{winter2016magnetic,odeen2019magnetic,lutz2020contactless}
+
+\subsection{De la température à la dose thermique}
+
+Le suivi de la distribution de la température est important pour visualiser le dépot d'énergie voir interrompre l'ablation en cas de température excessive. C'est vrai à proximité du dispositif mais encore plus essentiel près des structures ou organes adjacents potentiellement plus fragiles. Il s'agit alors de prévenir tout risque d'échauffement non souhaité. L'imagerie de température offre un bénéfice majeur supérieur à la plupart des autres modalités d'imagerie: la prédiction de l'extension de la lésion en temps réel.\\
+
+Connaissant la température locale du tissu, il est possible de prédire la mort cellulaire en utilisant le calcul de la dose thermique dans chaque voxel. La dose thermique a été introduite par \cite{sapareto1984thermal} qui a étudié la relation entre la température, le temps d'exposition (la durée du chauffage) et la mort cellulaire. Ils ont démontré qu'à 43°C, la durée nécessaire pour détruire 99\% des cellules de culture était de $240$ minutes. En augmentant d'un degré, le temps d'exposition est divisé par deux. Ce qui conduit sur des cellules en culture à un durée proche de $1$ s à $55$ °C. Ainsi, la surveillance en temps réel de la distribution de la dose thermique dans la région cible peut être utilisée pour déterminer (et minimiser) la durée nécessaire de l'ablation thermique. La relation entre la température et la \ac{CEM43} est la suivante:
+
+%\[
+%    CEM_{43}(t)= 
+%\begin{cases}
+%       \int_{0}^{t} {4^{T(t)-43}}dt,& \text{if } T(t)\geq 43\\
+%       \int_{0}^{t} {2^{T(t)-43}}dt,              & \text{autrement}
+%\end{cases}
+%\]
+
+Cette relation théorique est été validée à de nombreuses reprise et est utilisé dans des régions très sensibles tel que le thalamus pour le traitement des tremblements essentiels \cite{huang2018predicting}. Elle néanmoins reste sujette à caution \cite{o2012estimation} notamment dans les organes extrement perfusés. Le caractère exponentiel la rend par ailleurs très sensible au bruit de mesure.  
+
+\subsection{De la séquence à la procédure}
+
+La technologie d''imagerie de température par IRM ce qui inclut la séquence d'acquisition et la méthode de reconstruction est indissociable de la procédure dans laquelle elle est utilisée. Les caractéristiques de la séquence doivent être définies en fonction de la durée d'ablation, de la quantité d'énergie déposé par seconde. D'autre part, ces contraintes sont exacerbées en présence de boucle de rétroaction pour piloter la position ou la puissance des dispositifs médicaux lors de la procédure \cite{bour2018real,desclides2023real, ozenne2016automatic}. Enfin, la procédure interventionnelle peut être relativement complexe à mettre en oeuvre et nécessite donc des méthodes IRM simples et fiables.\\
+
+Les travaux de recherche présentés ont pour objectif le développement de méthodes d’imagerie innovantes permettant de répondre aux enjeux et défis de l’IRM en temps réel dans le cadre de l’imagerie interventionnelle et notamment l’imagerie de température. Les organes visés sont le coeur et le foie. Les difficultés de l’imagerie IRM sur organes mobiles pour le diagnostic et les difficultés de l’imagerie IRM en temps réel interventionnelle pour la thérapie guidée sont donc réunies. Une brève description des verrous technologiques est listée ci-dessous.
+
+\section{Principales difficultées scientifiques et verrous technologiques}
+\label{chap1-verrous}
+
+\underline{\textbf{Résolution temporelle :}} Les contraintes sur le temps d’acquisition sont un obstacle majeur pour l’acquisition en temps réel sur organes en mouvement rapide, du fait d’une cadence d’acquisition généralement trop faible avec les méthodes d’acquisition conventionnelles. La séquence d’acquisition doit être en mesure d’acquérir un volume en un minimum de temps (< 1s), afin de maintenir un taux de rafraichissement suffisant et permettre l’exploitation des données en temps réel.\\
+
+\underline{\textbf{Résolution spatiale :}} L’acquisition en IRM nécessite un compromis entre le temps d’acquisition, la taille du voxel imagé (le nombre d’observables) et le rapport signal sur bruit obtenu. A temps équivalent, une résolution spatiale élevée va limiter la quantité de signaux mesurés et réduire drastiquement le signal sur bruit. La séquence d’acquisition doit fournir des images avec des résolutions spatiales suffisantes pour observer la zone traitée et caractériser le plus précisément possible la procédure interventionnelle.\\
+
+\underline{\textbf{Couverture spatiale :}} L’imagerie interventionnelle IRM ne bénéficie pas ou peu à l’heure actuelle des progrès récents concernant l’acquisition dynamique ou simultanée de coupes successives dans l’espace et encore moins d’acquisitions permettant la reconstruction de volume 3D pour le suivi volumétrique des procédures.\\
+
+\underline{\textbf{Mouvement :}} Les méthodes développées doivent être robustes aux mouvements physiologiques (respiration, contraction cardiaque, flux sanguin dans les cavités,...) qui perturbent l’acquisition et induisent de nombreux artéfacts. Les mouvements intra-scans (temps d’acquisition d’une image) et inter-scans (entre deux acquisitions successives) doivent être minimisés pour permettre des mesures fiables dans le temps. Par ailleurs, les solutions choisies doivent être optimisées, car les méthodes de corrections de mouvements sont souvent coûteuses en temps de calcul. Les tâches les plus longues étant parfois les plus importantes, un travail d’optimisation algorithmique doit être effectué pour trouver le bon équilibre entre la précision et le temps nécessaire pour effectuer une tâche donnée.\\
+
+\underline{\textbf{Interaction opérateur-IRM :}} L’IRM est un dispositif médical qui offre un nombre extraordinaire de possibilités pour imager les tissus, mais ne permet à l’heure actuelle que très peu d’interactions entre l’opérateur et la machine une fois l’acquisition lancée. Ceci est inhérent au fonctionnement médical dans lequel les acquisitions sont protocolées à l’avance et lancées séquentiellement une fois le positionnement de la zone à imager définie. A l’exception des modules de guidage, il n’existe donc pas de flexibilité pour adapter ou moduler le schéma d’acquisition en fonction de l’image acquise ou de paramètres physiologiques (respiration, rythme cardiaque).\\
+
+\underline{\textbf{Reconstruction en temps réel :}} Le traitement de données en temps réel nécessite un reconstructeur d’images plus performant que le système clinique standard, pour gérer un flux de données nettement supérieur (en comparaison avec le fonctionnement normal de l’IRM) et obtenir les images à une cadence adaptée à l’acquisition (pas de latence). Par ailleurs, les algorithmes de reconstruction doivent être optimisés pour utiliser au mieux ces ressources de calcul.\\
+
+\underline{\textbf{Sécurité et fiabilité :}} Les outils développés doivent être conçus avec des contraintes de temps réel très fortes afin d’assurer la sécurité de la procédure et donc du patient. La conception d’outils destinés à de fins thérapeutiques impose des exigences strictes concernant la robustesse, la réactivité à des erreurs humaines ou des situations inattendues. Il est important de souligner que la mise en place d’outils précliniques ou de faisabilité répond aussi à ces exigences.
+
+\section{La procédure thérapeutique sous guidage IRM}
+
+La feuille de route d’une procédure thérapeutique idéale sous IRM est présentée dans la figure \ref{fig-procedure}. Une liste (non-exhaustive) d’objectifs clés est la suivante:
+
+%\begin{figure}[hbtp]
+	%\begin{bigcenter}
+%       \includegraphics[width=1.0\linewidth]{images/Chapitre1/procedure.png}
+%        \caption[]{\textbf{Feuille de route d’une procédure thérapeutique idéale sous IRM.} Les étapes de Navigation et d’Intervention imposent sur les développements méthodologiques des contraintes de temps réel fortes. Cette feuille de route s’applique à des procédures d’ablation, de cryoblation, ou de radiothérapie guidées par IRM. Le partage et l’intégration automatique d’informations entre les étapes est un élément essentiel d’amélioration des procédures existantes.} 
+%        \label{fig-procedure}
+       % \end{bigcenter}
+%\end{figure}
+
+
+\begin{description}
+\item Imager les organes cibles dans chaque état physiologique (imagerie 4D/5D) pour pouvoir à la fois caractériser les mouvements et déformations de la cible et la segmenter.
+\item  Utiliser les caractéristiques des mouvements pour asservir l’imagerie 4D/5D ou guider l’imagerie en temps réel.
+\item  Réaliser de l’imagerie fonctionnelle tridimensionnelle en temps réel pendant l’intervention.
+\item  Disposer d’outils de traitement en temps réel adaptés à la prise de décision: traitement asynchrone des tâches de l’imageur et du dispositif médical, segmentation des images et quantification automatique.
+\end{description}
+
+Pour répondre à ces objectifs, ce projet s’est articulé autour de 5 axes de recherche :
+
+\begin{enumerate} 
+\item Conception de nouvelles méthodes d’acquisition pour l’IRM en temps réel.
+\item Développement de nouvelles stratégies permettant de s’affranchir du mouvement.
+\item Développement de l’IRM en temps réel adaptative et interactive.
+\item Intégration des méthodes dans un environnement souple et en temps réel.
+\item Validation préclinique et clinique.
+\end{enumerate}
+
+\subsection{Conception de nouvelle méthodes d'acquisitions pour l'irm en temps réel}
+
+Un des enjeux du projet proposé est la possibilité de guider l’ablation radiofréquence dans les ventricules ou l'oreillette pour le traitement de la fibrillation ventriculaire ou atriale (cf chapitre \ref{chap2-ablation}). Pour cela, la résolution spatiale des images de température doit être améliorée par rapport à l’état de l’art. L’objectif est d’atteindre une résolution isotrope de voxel de $1$ x $1$ x $1$ $mm^3$ tout en maintenant une cadence d’acquisition élevée ($5$ à $10$ images/s). Ceci entraine malheureusement une augmentation du temps d’acquisition. Afin d’augmenter la résolution spatiale en IRM, il est soit nécessaire d’augmenter la taille des matrices d’acquisition ou soit de réduire le champ de vue. Malheureusement, le premier cas implique une augmentation du temps d’acquisition et le second la présence de repliement dans l’image.\\
+
+Pour pallier à ces problèmes, je propose de développer plusieurs séquences, pour à terme combiner leurs avantages. La première se base sur l’acquisition simultanée (SMS pour Simultaneous Multi-Slice) de plusieurs coupes d’imagerie \cite{larkman2001investigation,setsompop2012blipped}. Ainsi, l’acquisition simultanée module les fréquences du signal IRM afin d’acquérir en une seule impulsion le signal de plusieurs coupes réparties dans l’espace (cf paragraphe \ref{chap3-etude1-sms}). Cela induit alors une superposition des signaux des coupes dans l’image. Grâce à des sensibilités des canaux de réception différents, les images peuvent être séparées avec les méthodes de reconstruction classique \cite{breuer2005controlled}. La seconde option consiste à imager la cible avec un champ de vue réduit (cf paragraphe \ref{chap2-etude6-t1w}). Soit en utilisant des séquences possédant un pulse d’excitation spatialement sélectif dans la direction de coupe et de phase \cite{saritas2008dwi}, soit avec des séquences dites SPEN (Spatiotemporal ENcoding) qui permettent de reconstruire une image sans utiliser la transformée de fourier dans la direction de phase \cite{ben2010super}. Ces deux méthodes permettraient d’éviter les repliements dans l’image et de réaliser de l’imagerie de température localisée.\\
+
+Enfin, les méthodes d’encodage de l’espace des k non cartésiennes comme les méthodes radiales ou spirales \cite{wright20143d} peuvent être fortement sous-échantillonnées pour accélérer l’acquisition (cf paragraphe \ref{chap2-etude5-radial}). Elle présentent l’avantage d’échantillonner le centre de l’espace des k ce qui contribue à la fois aux hautes et basses fréquences de l’image et l’exploitation du point central de l’espace des k contient des informations sur les mouvements physiologiques. Néanmoins, la plupart de ces méthodes de reconstruction associées dite itératives, \cite{lustig2007sparse}) ne sont cependant pas assez efficaces ou non adaptées aux contraintes de temps réel de l’imagerie interventionnelle (temps de calcul qui dépasse parfois plusieurs heures) mais elles présentent un intérêt certain pour imager les organes cibles dans chaque état physiologique (imagerie 4D/5D). 
+
+\subsection{Développement de nouvelles stratégies permettant de s'affranchir du mouvement}
+
+Les mouvements combinés de respiration et de battement cardiaque représentent un défi technique pour l’imagerie en temps réel. Pour s’affranchir de la contraction cardiaque, les acquisitions peuvent être synchronisées avec le signal \ac{ECG}. Il en est de même avec le mouvement respiratoire où les acquisitions peuvent être synchronisées sur la phase la plus stable de la respiration. Cependant, ces méthodes finissent par être couteuses en temps et ne sont pas toujours bien adaptées (la synchronisation ECG fonctionne mal en présence d’arythmie, cf paragraphe \ref{chap2-etude3-cliniqueventricule}). De nouvelles approches seront donc proposées pour s’affranchir du mouvement ou le corriger en temps réel. Nous pouvons distinguer les méthodes de détection (qui permettent de trier les données) et les méthodes de correction (qui permettent de recaler les images). La première étape de la stratégie que je propose consiste à décrire le mouvement à l’aide d'un capteur en temps réel. Ce capteur peut être soit interne soit externe à l’IRM.\\
+
+Dans le cas d’un capteur interne à l’IRM, en se basant sur les séquences proposées ci-dessus, il est possible en analysant les fréquences acquises d’obtenir de l’information sur les battements cardiaques et la respiration. Cette méthode est appelée auto-synchronisation (ou self-gating en anglais). L’extraction de l’intensité du point central de l’espace des k au cours du temps permet d’extraire à la fois une information respiratoire et une information cardiaque.\\
+
+Des capteurs externes à l’IRM peuvent aussi être mis en oeuvre. L’incorporation de micro-antennes de réception dans un cathéter permet déjà de localiser sa position dans l’aimant avec une précision de l’ordre du millimètre (cf paragraphe \ref{chap2-etude4-micro}, \ref{chap2-etude5-radial} et \ref{chap2-etude6-t1w}). Cette méthode de détection sera évaluée et comparée à la méthode d’autosynchronisation. Elle sera ensuite associée à un algorithme de reconstruction pour améliorer le tri des données acquises. Actuellement, le fonctionnement des techniques courantes de détection en imagerie IRM cardiaque est particulièrement sous-optimal\footnote{le navigateur 1D : c’est-à-dire une acquisition très rapide (30ms) tête pied lancé juste avant l’acquisition de chaque ligne de l’espace k qui permet d’observer par exemple la position du dôme du foie}. En effet, la plupart des données acquises sont exclues et perdues. Il serait plus judicieux de les intégrer à la reconstruction moyennant des corrections en mouvements pour gagner en signal sur bruit et diminuer par ailleurs le temps d’acquisition des séquences.\\
+
+La deuxième étape de la stratégie de correction de mouvements s’appuie sur les algorithmes de flots d’optiques qui sont couramment utilisés pour décrire le mouvement entre deux images. Les algorithmes de flots d’optiques analysent les variations d’intensité entre deux images successives pour estimer les champs déplacement\footnote{carte paramétrique indiquant les vecteurs de déplacement pour chaque voxel}, l’application de ces champs déplacement permet donc de corriger le mouvement observé. Ils sont particulièrement adaptés aux contraintes de temps réel et offrent une réponse rapide et robuste (cf paragraphe \ref{chap2-etude1-mrm} et paragraphe \ref{chap3-etude2-motion}).\\
+
+\subsection{Développement de l’IRM en temps réel adaptative et interactive}
+
+L’IRM adaptative vise à modifier en temps réel le schéma d’acquisition soit dans l’espace réel, soit dans l’espace des k. Le premier cas permet par exemple d’asservir la position des coupes en fonction d’un capteur qui peut être interne à l’IRM (le navigateur 1D) ou externe (la position de l’extrémité d’un cathéter, le signal d’un appareil échographique, etc.).\\
+
+%\begin{figure}[hbtp]
+%	%\begin{bigcenter}
+%       \includegraphics[width=1.0\linewidth]{images/Chapitre1/asynchrone.png}
+%        \caption[]{\textbf{Chaîne de traitements.} Linéaire (A) Asynchrone (B).} 
+%        \label{fig-asynchrone}
+%       % \end{bigcenter}
+%\end{figure}
+
+Dans le second cas, l’ajustement en temps réel du schéma d’acquisition pourrait être utilisé pour compléter de manière parfaitement homogène l’espace des k dans le cas d’une acquisition 3D cardiaque. En effet, en présence de mouvements, il est possible de trier les données acquises par phase cardiaque et par phase respiratoire pour réaliser des acquisitions 5D (x,y,z,ecg,resp). Ces acquisitions ne sont pas en temps réel à proprement parler, mais peuvent être exploitées pour obtenir une description complète de l’anatomie du patient avant l’intervention. Malheureusement, la combinaison des signaux physiologiques induit un échantillonnage non uniforme de l’espace de k. Une analyse de la densité des points en temps réel pourrait corriger ce défaut en ajustant l’acquisition dès que l’état respiratoire est disponible. Cela permettrait en outre de stopper l’acquisition automatiquement dès l’obtention de l’intégralité des données nécessaires dans l’espace des k. L’utilisation d’une chaîne de traitement asynchrone est présentée en figure \ref{fig-asynchrone}.\\
+
+Le passage d’une chaîne de traitement linéaire à une chaîne de traitement asynchrone et interactive est un enjeu en imagerie IRM. Par exemple, la combinaison de séquences radiales avec des méthodes d’auto synchronisation décrites au pragraphe précèdent permettrait d’asservir le schéma d’acquisition. Cette méthode offre plusieurs avantages: une reconstruction évolutive (basse résolution puis haute résolution). Les données disponibles pourront être utilisées sur des instances différentes pour analyser le mouvement, segmenter des zones d’intérêt avec des méthodes d’apprentissage automatique, calculer des paramètres physiques. Cette approche multi-résolution a été récemment mise en oeuvre pour les étapes de planification en radiothérapie par IRM-\ac{LINAC} \ref{bruijnen2019multiresolution}.\\
+
+Une dernière possibilité est la réalisation de méthodes d'imagerie IRM hybride intégrant des données IRM expérimentales et des données numériques. Il s'agit d'améliorer en temps réel les images reconstruites en intégrant des données externes issues de modélisations personnalisées. Ce concept est présenté dans le chapitre \ref{chap4-alternatives-et-perspectives} dans le contexte des ablations thermiques.\\
+
+\subsection{Intégration des méthodes dans un environnement souples et en temps réel}
+
+En imagerie en temps réel, la cadence d’acquisition et la quantité de flux de données (de 10 à 50 Mo/s) impose au reconstructeur d’image de la machine IRM (fournie par le constructeur) des contraintes non prévues dans son cahier des charges. Pour cela, il est nécessaire de mettre en place une infrastructure réseau beaucoup plus performante permettant de dériver l’acquisition des données en temps réel pour effectuer la reconstruction sur un calculateur externe. Lors de mon stage post-doctoral j’ai activement contribué à la mise en place d’un tel environnement de travail sur plusieurs sites de recherche et sites cliniques via l’installation du \GADGETRON\footnote{le \GADGETRON est un logiciel de reconstruction d’image IRM open-source}. Le \GADGETRON offre une souplesse d’utilisation inégalée que ce soit pour le prototypage, le développement ou le déploiement de solutions en environnement clinique. L’aspect open-source et indépendant du constructeur permet de dimensionner l’environnement de travail suivant ces besoins : le système choisi peut-être un ordinateur, un réseau local d’ordinateurs, un calculateur national, un calculateur privé (Azure, Amazon Cloud, ...), le tout directement connecté à l’IRM. Le \GADGETRON dispose d’un grand nombre de librairies optimisées pour l’imagerie en temps réel, l’utilisateur à la possibilité de compléter ou créer ces propres librairies dans des langages scientifiques (\MATLAB, Python) ou adaptés aux contraintes de temps réel (C++, \CUDA). Les possibilités sont immenses, à titre d’exemple les dernières avancées de l’équipe de développement intégre le logiciel TensorFlow \footnote{un outil open source d’apprentissage automatique développé par Google} qui est directement accessible depuis l’IRM. Le cadre de nos développements est aussi ambitieux, l’ensemble des solutions présentées dans ce projet est intégré au \GADGETRON, le guidage où le suivi en température nécessitent des algorithmes performants et extrêmement robustes. A titre d’exemple, les séquences de thermométrie nécessitent des temps de calculs de l’ordre de la dizaine de millisecondes par coupe pour préserver un taux de rafraîchissement inférieur à la seconde. Par ailleurs, le \GADGETRON intégre des solutions de containérisation d’applications informatique qui facilitera grandement le déploiement de nos développements méthodologiques sur plusieurs sites lors d’études multi-centriques\cite{de2024fully,de2024advanced}.\\
+
+Ce savoir-faire est essentiel et mis à contribution dans la majorité des études (cf chapitre \ref{chap2-ablation}, chapitre \ref{chap3-oncologie} et Annexe \ref{chap-annexe3}). La mise en place d’une telle infrastructure est associée à trois caractéristiques :
+\begin{description}
+\item Modulaire : l’environnement est ajustable en fonction des besoins
+\item Immédiat : les développements réalisés sont visibles instantanément par le chercheur (lors du
+développement), le praticien (lors des tests de faisabilité)
+\item Portable : les choix technologiques permettent un transfert clinique immédiat
+\end{description}
+
+\subsection{Validation préclinique et clinique et conclusion}
+\label{chap4-conclusion}
+%sont axés sur le développement de l’imagerie IRM en temps réel dans le but de
+
+En conclusion, les travaux de recherche présentés visent à guider des interventions thérapeutiques sur organes mobiles. Pour mener à bien ce projet,il a été nécessaire d’imaginer des méthodes d’acquisitions originales, couplées à des stratégies robustes de corrections de mouvements. Tous ces développements ont été intégrés dans un environnement logiciel flexible et performant pour permettre le suivi des procédures en temps réel.\\
+
+Dans un premier temps, ces outils ont été appliqués aux thérapies guidées par imagerie pour la cardiologie interventionnelle pour le traitement des arythmies cardiaques (cf chapitre \ref{chap2-ablation}). Pour évaluer progressivement la faisabilité des méthodes, des expériences ont été réalisées sur des échantillons test (statique et en mouvement) puis sur des coeurs battants explantés (présence du battement cardiaque, mais sans mouvements respiratoires) et enfin sur des modèles précliniques. Les ablations par cathéter sont réalisées sur les oreillettes et les ventricules dans des conditions similaires à la pratique clinique. L’instrumentation (filtres et générateurs) permettant d’effectuer des ablations radiofréquence et des acquisitions IRM sans altération de la qualité d’image était déjà en place. Enfin, des validations cliniques ont été effectuées à l’Hôpital Haut-Lêveque de Bordeaux (cf Parapgraphe \ref{chap2-etude3-cliniqueventricule}).\\
+
+
+
+%\renewcommand{\bibname}{References}
+%\bibliographystyle{StyleThese}
+%\bibliography{chapitre1}
+\renewcommand{\bibname}{References}
+%\nocite{*}
+\bibliographystyle{StyleThese}
+\bibliography{Chapitre1}
+
+
+\end{document}

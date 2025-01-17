@@ -1,0 +1,34 @@
+\underline{\textbf{Sécurité et fiabilité :}} Les outils développés doivent être conçus avec des contraintes de temps réel très fortes afin d’assurer la sécurité de la procédure et donc du patient. La conception d’outils destinés à des fins thérapeutiques impose des exigences strictes concernant la robustesse, la réactivité à des erreurs humaines ou des situations inattendues. Il est important de souligner que la mise en place d’outils précliniques ou de faisabilité répond aussi à ces exigences.
+
+\section{La procédure thérapeutique sous guidage IRM}
+
+La feuille de route d’une procédure thérapeutique idéale sous IRM est présentée dans la figure \ref{fig-procedure}. Une liste (non exhaustive) d’objectifs clés est la suivante :
+
+%\begin{figure}[hbtp]
+	%\begin{bigcenter}
+%       \includegraphics[width=1.0\linewidth]{images/Chapitre1/procedure.png}
+%        \caption[]{\textbf{Feuille de route d’une procédure thérapeutique idéale sous IRM.} Les étapes de Navigation et d’Intervention imposent sur les développements méthodologiques des contraintes de temps réel fortes. Cette feuille de route s’applique à des procédures d’ablation, de cryoblation, ou de radiothérapie guidées par IRM. Le partage et l’intégration automatique d’informations entre les étapes est un élément essentiel d’amélioration des procédures existantes.}
+%        \label{fig-procedure}
+       % \end{bigcenter}
+%\end{figure}
+
+\begin{description}
+\item \textcolor{red}{I}mager les organes cibles dans chaque état physiologique (imagerie 4D/5D) pour pouvoir à la fois caractériser les mouvements et déformations de la cible et la segmenter.
+\item  Utiliser les caractéristiques des mouvements pour asservir l’imagerie 4D/5D ou guider l’imagerie en temps réel.
+\item  Réaliser de l’imagerie fonctionnelle tridimensionnelle en temps réel pendant l’intervention.
+\item  Disposer d’outils de traitement en temps réel adaptés à la prise de décision : traitement asynchrone des tâches de l’imageur et du dispositif médical, segmentation des images et quantification automatique.
+\end{description}
+
+Pour répondre à ces objectifs, ce projet s’est articulé autour de 5 axes de recherche :
+
+\begin{enumerate}
+\item Conception de nouvelles méthodes d’acquisition pour l’IRM en temps réel.
+\item Développement de nouvelles stratégies permettant de s’affranchir du mouvement.
+\item Développement de l’IRM en temps réel adaptative et interactive.
+\item Intégration des méthodes dans un environnement souple et en temps réel.
+\item Validation préclinique et clinique.
+\end{enumerate}
+
+\subsection{Conception de nouvelles méthodes d'acquisitions pour l'IRM en temps réel}
+
+Un des enjeux du projet proposé est la possibilité de guider l’ablation radiofréquence dans les ventricules ou l'oreillette pour le traitement de la fibrillation ventriculaire ou atriale (cf chapitre \ref{chap2-ablation}). Pour cela, la résolution spatiale des images de température doit être améliorée par rapport à l’état de l’art. L’objectif est d’atteindre une résolution isotrope de voxel de $1$ x $1$ x $1$ $mm^3$ tout en maintenant une cadence d’acquisition élevée ($5$ à $10$ images/s). Ceci entraîne malheureusement une augmentation du temps d’acquisition. Afin d’augmenter la résolution spatiale en IRM, il est soit nécessaire d’augmenter la taille des matrices d’acquisition ou soit de réduire le champ de vue. Malheureusement, le premier cas implique une augmentation du temps d’acquisition et le second la présence de repliement dans l’image.\\

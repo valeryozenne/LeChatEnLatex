@@ -1,0 +1,19 @@
+
+L'imagerie de température par IRM du proton \isotope[1]{H} repose sur l'existence d'une relation linéaire entre la température et les variations de champ magnétique local. Ces dernières sont induites par la formation ou la rupture de liaisons covalentes \isotope[1]{H}-\isotope[16]{O} lors des changements de température dans l'eau liquide. La dépendance de la température est d'environ 0.01 \ac{ppm} par degré. La méthode de \ac{PRFs} est généralement mise oeuvre par des méthodes d'imagerie de phase par écho de gradient. La \ac{PRFs} est valide entre 0 et 100 \textcelsius sur les tissus acqueux et exclus donc la graisse et les os. La relation entre la variation de température et de phase repose sur la formule suivante: 
+
+\[
+\Delta T= \frac{\Delta P}{\alpha.\gamma.B_{0}.TE.}
+\]
+
+avec $\alpha=0.01$ ppm/°C, $\gamma$ le facteur gyromagnétique du proton, $B_{0}$ le champ magnétique en Tesla, TE le temps d'écho en s, et $\Delta P$ étant la variation de phase par rapport à une image de référence. On distingue deux types de séquences avec les encodages de l'espace de k suivant:
+
+\begin{description}
+\item La séquence la plus couramment utilisée est la séquence \ac{FLASH} qui offre la meilleure fiabilité en dépit d'une résolution temporelle et d'une couverture spatiale médiocre.
+\item Les séquences d'imagerie écho-planaire ou \ac{EPI}. Cette amélioration en cadence d'acquisition est réalisée au prix d'une sensibilité acrue aux effets T2* et donc aux effets de susceptibilité magnétique telles que les distortions géométriques.
+\end{description}
+
+L'imagerie de température est extrèmement sensible à de multiples artéfacts incluant le champ statique $B0$, le mouvement, les propriétés électriques du tissu, la susceptibilité magnétique, la perfusion, le déplacement chimique. Les erreurs induites peuvent parfois être supérieures à 50°C (cf paragraphe \ref{chap3-etude3-artefact}) ou négligées suivant les conditions. J'invite le lecteur à lire ces trois revues pour plus détails \cite{winter2016magnetic,odeen2019magnetic,lutz2020contactless}
+
+\subsection{De la température à la dose thermique}
+
+Le suivi de la distribution de la température est important pour visualiser le dépot d'énergie voir interrompre l'ablation en cas de température excessive. C'est vrai à proximité du dispositif mais encore plus essentiel près des structures ou organes adjacents potentiellement plus fragiles. Il s'agit alors de prévenir tout risque d'échauffement non souhaité. L'imagerie de température offre un bénéfice majeur supérieur à la plupart des autres modalités d'imagerie: la prédiction de l'extension de la lésion en temps réel.\\
