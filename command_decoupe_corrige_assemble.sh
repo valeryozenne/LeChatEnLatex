@@ -38,10 +38,9 @@ do
 
 compteur_formatte=$(printf "%02d" "$NUM")
 # call Le Chat, cocorico!
-#if [[ $NUM -eq 8 ]]; then
 echo ' ======= miaouh '${compteur_formatte}
-#python3 LeChat/tester_API_v4.py ${FOLDER_CHAPITRE}/partie_${compteur_formatte}.tex ${FOLDER_CHAPITRE}/partie_${compteur_formatte}_chat.tex
-#fi
+python3 LeChat/tester_API_v4.py ${FOLDER_CHAPITRE}/partie_${compteur_formatte}.tex ${FOLDER_CHAPITRE}/partie_${compteur_formatte}_chat.tex
+
 done 
 deactivate
 

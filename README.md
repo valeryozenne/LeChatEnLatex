@@ -9,10 +9,11 @@ Testé sur Ubuntu 22.04 lors de la rédaction de mon HDR en janvier 2024
 # Pré-requis
 
 - Ouvrir un compte sur [https://mistral.ai/en/](https://mistral.ai/en/)
-- Activer l'API gratuite dans Paramètres du compte. 
+- Activer l'API gratuite dans Paramètres du compte.
 - Puis générer une clé API.
 - Enregistrer la clé API dans votre ~/.bashrc ou la copier e dur dans le code python.
-- Un fichier Latex pouvant être compilé avec pdflatex nommé Chapitre1.tex.
+- Créer un environnement virtuel python avec [mistralai](https://pypi.org/project/mistralai/)
+- Mettre un fichier Latex pouvant être compilé avec pdflatex. Si possible le nommer `Chapitre1.tex`. Le fichier .pdf corrigé sera alors nommé `Chapitre1_rouge.pdf`
 
 # Usage
 
@@ -36,8 +37,17 @@ Si besoin pensez à supprimer le dossier `Correction` pour un nouveau chapitre
 - la capacité de contrôlé
 - Les opérations effectués
 - afin quelles soient
-- 
+- perçu 
+  
 # Mots Clés
 
 Mistral-AI, Le Chat, Latex, Correction Orthographiques, Prompt, LeChat, These, Doctorat, PhD, Habilitation à diriger des recherches.
 
+# Python Environnement
+
+```
+python3 -m venv mistral-env
+source mistral-env/bin/activate 
+pip install mistralai
+deactivate
+```
