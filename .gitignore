@@ -1,0 +1,10 @@
+*.out
+*.aux
+*.log
+*.maf
+*.mtc
+*.mtc0
+*.out
+
+Chapitre1_rouge.pdf
+Chapitre1_rouge.tex

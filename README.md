@@ -18,6 +18,21 @@ Testé sur Ubuntu 22.04 lors de la rédaction de mon HDR en janvier 2024
 ./command_decoupe_corrige_assemble.sh 
 ```
 
+Des erreurs sont possibles. Dans ce cas modifier le prompt ou modifier manuellement le fichier Chapitre1_rouge.tex puis taper la commande suivante
+
+```
+pdflated Chapitre1_rouge.tex
+```
+
+
+# Liste non exhaustives d'erreurs (grossières) ajoutées
+
+- Le temps réel en traitement d’image désignent
+- des image
+- la capacité de contrôlé
+- Les opérations effectués
+- afin quelles soient
+- 
 # Mots Clés
 
 Mistral-AI, Le Chat, Latex, Correction Orthographiques, Prompt, LeChat, These, Doctorat, PhD, Habilitation à diriger des recherches.
